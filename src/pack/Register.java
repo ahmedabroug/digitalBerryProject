@@ -13,8 +13,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Register {
 	@XmlElement(name = "name")
 	private String name;
-	@XmlElement(name = "Description")
-	private String Description;
+	@XmlElement(name = "description")
+	private String description;
 	@XmlElement(name = "addressOffset")
 	private String addressOffset;
 	@XmlElement(name = "size")
@@ -23,11 +23,13 @@ public class Register {
 	private String access;
 	@XmlElement(name = "reset")
 	private Reset reset;
+	
     @XmlElementWrapper(name = "parameters")
     @XmlElement(name = "parameter")
 	private List<Parameter> parameters;
+    
 	@XmlElement(name = "field")
-	private Field field;
+	private List<Field> field;
 	
 	
 	public String getName() {
@@ -37,10 +39,10 @@ public class Register {
 		this.name = name;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	public String getAddressOffset() {
 		return addressOffset;
@@ -72,12 +74,20 @@ public class Register {
 	public void setParameters(List<Parameter> parameters) {
 		this.parameters = parameters;
 	}
-	public Field getField() {
+	public List<Field> getField() {
 		return field;
 	}
-	public void setField(Field field) {
+	public void setField(List<Field> field) {
 		this.field = field;
 	}
+	@Override
+	public String toString() {
+		return "Register [name=" + name + ", Description=" + description + ", addressOffset=" + addressOffset
+				+ ", size=" + size + ", access=" + access + ", reset=" + reset + ", parameters=" + parameters
+				+ ", field=" + field + "]";
+	}
+	
+	
 	
 	
 

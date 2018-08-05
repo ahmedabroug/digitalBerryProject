@@ -5,9 +5,8 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name = "addressBlock", namespace="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1.4")
+@XmlRootElement(name = "addressBlock")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class AddressBlock {
 	@XmlElement(name = "name")
@@ -18,7 +17,8 @@ public class AddressBlock {
 	private String range;
 	@XmlElement(name = "width")
 	private String width;
-    @XmlElementWrapper(name = "registers")
+	
+    
     @XmlElement(name = "register")
 	private List<Register> registers;
 	public String getName() {

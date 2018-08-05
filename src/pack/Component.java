@@ -8,24 +8,31 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 @XmlRootElement(name = "component")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Component {
-
+	
+	@XmlElement(name = "vendor")
 	private String vendor;
 	
+	@XmlElement(name = "library")
 	private String library;
+	
 	@XmlElement(name = "name")
 	private String name;
+	
 	@XmlElement(name = "version")
 	private String version;
-	@XmlElement(name = "busInterfaces")
-	private BusInterfaces busInterfaces;
+	
+	@XmlElementWrapper(name = "busInterfaces")
+	@XmlElement(name = "busInterface")
+	private List<BusInterface> busInterfaces;
+	
 	@XmlElementWrapper(name = "memoryMaps")
 	@XmlElement(name = "memoryMap")
 	private List<MemoryMap> memoryMaps;
+	
 	@XmlElement(name = "model")
 	private Model model;
 	
@@ -55,11 +62,11 @@ public class Component {
 	public void setVersion(String version) {
 		this.version = version;
 	}
-	public BusInterfaces getBusInterfaces() {
+	public List<BusInterface> getBusInterfaces() {
 		return busInterfaces;
 	}
 	
-	public void setBusInterfaces(BusInterfaces busInterfaces) {
+	public void setBusInterfaces(List<BusInterface> busInterfaces) {
 		this.busInterfaces = busInterfaces;
 	}
 	public List<MemoryMap> getMemoryMaps() {
